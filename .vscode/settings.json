@@ -1,0 +1,10 @@
+{
+    "workbench.editor.autoLockGroups": {
+        "default": true
+    },
+    "workbench.settings.useSplitJSON": false,
+    "workbench.editor.fontLigatures" : true,
+    "json.schemas": [
+        
+    ]
+}
