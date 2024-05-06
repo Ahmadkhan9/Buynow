@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Button from '../Button/Button'
 
 export const ProductCardContainer = styled.div`
 width: 100%;

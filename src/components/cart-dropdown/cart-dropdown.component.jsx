@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button'
 import CartItem from '../cart-item/cart-item.component'
 import { useNavigate } from 'react-router-dom'

@@ -1,6 +1,6 @@
 // import { useDispatch, useSelector } from "react-redux"
 import { createAction } from "../../components/Utils/Reducer/reducer.util"
-import { updateProductQuantity, calculateItemAndPrice , addCartItem } from "./cart.helperFunctions"
+import { updateProductQuantity, addCartItem } from "./cart.helperFunctions"
 import { USER_ACTION_TYPE } from "./cart.types"
 export const decreaseProductQuantity = (id , cartItem) =>{
     return updateProductQuantity(cartItem ,id )

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import './App.css';
-import { useGetCategories } from './Hooks/useGetCategories';
 import Navigation from './routesPages/Navigation/Navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCategories } from './Store/Category/category.selector';
@@ -14,7 +13,7 @@ const App = ()=> {
     if(user){
       dispatch(setCurrentUser(JSON.parse(user)))
     }
-  }, [])
+  }, [dispatch])
   return(
     <Navigation />
   )

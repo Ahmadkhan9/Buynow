@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux"
 import { USER_ACTION_TYPE } from "./cart.types"
 import { createAction } from "../../components/Utils/Reducer/reducer.util"
-const dispatch = useDispatch
 export const updateProductQuantity = (cartItem ,id) => {
     const existingProduct = cartItem.find(item => item._id === id)
         if(existingProduct.quantity === 1){

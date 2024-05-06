@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ProductCart from '../ProductCart/ProductCart.component'
 import { CategoryTitle } from './category.style'
 import { CategoryContainer } from './category.style'
 import { useSelector } from 'react-redux'
 import { selectCategories } from '../../Store/Category/category.selector'
-// import { categoriesMapSelector } from '../../Store/Category/category.selector'
 const Category = () => {
     const {category} = useParams()
     console.log('render/rerender component')
