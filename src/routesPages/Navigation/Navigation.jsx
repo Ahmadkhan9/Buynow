@@ -1,21 +1,23 @@
 import React, { useContext } from 'react'
 // import './Navigation.style.scss'
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import {ReactComponent as CrwnLogo} from './../../assets/crown.svg'
-import { userContext } from '../../Context/User.context'
-import { productContext } from '../../Context/Product.context'
-import CartIcon from '../../components/cart-icon/CartIcon'
 import CartIconComponent from '../../components/cart-icon/CartIcon'
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component'
-import { cartContext } from '../../Context/Cart.context'
 import { LogoContainer, NavLink, NavLinks, NavigationContainer } from './Navigation.style'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrentUser } from '../../Store/user/user.action'
+import {  currentUser } from '../../Store/user/user.selector'
+import { selectisOpenCart } from '../../Store/Cart/cart.selector'
 const Navigation = () => {
-  const {currentUser , setCurrentUser} = useContext(userContext)
+  const isOpenCart = useSelector(selectisOpenCart)
+  const currentUserSelector = useSelector(currentUser)
+  const dispatch = useDispatch()
   const handleSignOut = () => {
-    setCurrentUser(null)
+    dispatch(setCurrentUser(null))
     localStorage.removeItem('auth')
   }
-  const {isOpenCart} = useContext(cartContext)
+  console.log(currentUserSelector)
   return (
     <>
       <NavigationContainer>
@@ -25,7 +27,8 @@ const Navigation = () => {
         <NavLinks>
 
           <NavLink className='nav-link' to={'shop'}>SHOP</NavLink>
-          {currentUser ? (<NavLink as={'span'} onClick={handleSignOut} className='nav-link'>SIGN OUT</NavLink>) :(<NavLink className='nav-link' to={'auth'}>SIGN IN</NavLink>)}
+          {currentUserSelector && <NavLink className='nav-link' to={`/dashboard/${currentUserSelector.user.role === 'admin' ? 'admin' : 'user'}`}>DASHBOARD</NavLink>}
+          {currentUserSelector ? (<NavLink as={'span'} onClick={handleSignOut} className='nav-link'>SIGN OUT</NavLink>) :(<NavLink className='nav-link' to={'auth'}>SIGN IN</NavLink>)}
           <CartIconComponent/>
         </NavLinks>
         {isOpenCart && <CartDropdown/>}

@@ -40,7 +40,7 @@ exports.createProduct = catchAsync(async (req,res,next)=>{
 })
 
 exports.getProduct = catchAsync(async (req , res, next)=> {
-    const products = await Product.find().populate('category')
+    const products = await Product.find()
     res.status(200).json({
         status : 'success',
         products

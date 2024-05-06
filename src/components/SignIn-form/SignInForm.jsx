@@ -1,18 +1,17 @@
-import React, { useContext, useState } from 'react'
-import {useForm } from 'react-hook-form'
-import useSignUp from '../../Hooks/useSignUp'
+import React, { useState } from 'react'
 import FormInput from '../form-input/FormInput'
 import './siginIn.style.jsx'
 import Button from '../Button/Button'
 import useLogIn from '../../Hooks/useLogIn'
-import { userContext } from '../../Context/User.context'
 import { Heading2, SignUpContainer } from './siginIn.style.jsx'
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentUser } from './../../Store/user/user.action';
 const defaultForm = {
     email : '',
     password : ''
 }
 const SignInForm = () => {
-  const {currentUser , setCurrentUser} = useContext(userContext)
+  // const {currentUser , setCurrentUser} = useContext(userContext)
   const [formFields , setFormFields] = useState({
     email : '',
     password : ''
@@ -22,13 +21,16 @@ const SignInForm = () => {
   }
   const { email , password} = formFields
   const {mutateAsync} = useLogIn()
+  const dispatch = useDispatch()
+  const currentUser = useSelector((state) => state.currentUser)
   const handleLogIn = async (e) => {
     e.preventDefault()
     if(currentUser) return  
     try{
       const user = await mutateAsync(formFields)
+      console.log(user)
       if(user){
-        setCurrentUser(user)
+        dispatch(setCurrentUser(user))
         const auth = {...user , token : `Bearer ${user.token}`}
         localStorage.setItem('auth' , JSON.stringify(auth))
         resetForm()

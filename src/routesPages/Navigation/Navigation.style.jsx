@@ -24,14 +24,3 @@ export const NavLink = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
 `
-// .navigation {
-    
-
-  
-//       .nav-link {
-//         padding: 10px 15px;
-//         cursor: pointer;
-//       }
-//     }
-//   }
-  

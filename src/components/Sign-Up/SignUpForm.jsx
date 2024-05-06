@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react'
-import {useForm } from 'react-hook-form'
+import React, {  useState } from 'react'
 import useSignUp from '../../Hooks/useSignUp'
 import FormInput from '../form-input/FormInput'
 import Button from '../Button/Button'
-import { userContext } from '../../Context/User.context'
-import axios from 'axios'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentUser } from './../../Store/user/user.action';
+import { currentUser } from '../../Store/user/user.selector';
 const defaultForm = {
   name : '',
     email : '',
@@ -23,20 +22,22 @@ const SignUpForm = () => {
     setFormFields(defaultForm)
   }
   const {mutateAsync} = useSignUp()
-  const {currentUser, setCurrentUser} = useContext(userContext)
+  // const {currentUser, setCurrentUser} = useContext(userContext)
   const {name , email , password, confirmPassword} = formFields
   const handleChange = (event) => {
     const {name , value} = event.target
     setFormFields({...formFields , [name] : value})
   }
+  const currentUserSelector = useSelector(currentUser)
+  const dispatch = useDispatch()
   const handleSignUp = async (e)=> {
     e.preventDefault()
-    if(currentUser) return
+    if(currentUserSelector) return
     try{
       const user = await mutateAsync(formFields)
-      setCurrentUser(user)
+      dispatch(setCurrentUser(user))
       const auth = {...user , token : `Bearer ${user.token}`}
-      localStorage.setItem('auth' , JSON.stringify(auth))
+        localStorage.setItem('auth' , JSON.stringify(auth))
       resetForm()
     }catch(err){
       console.log(err)

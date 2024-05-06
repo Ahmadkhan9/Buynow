@@ -5,4 +5,10 @@ router.route('/create-category').post(CategoryController.createCategory)
 router.route('/get-all-categories').get(CategoryController.getAllCategories)
 router.route('/category/:id').get(CategoryController.getSingleCategory)
 
+
+
+
+
+
+
 module.exports = router

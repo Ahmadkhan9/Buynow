@@ -1,0 +1,4 @@
+export const USER_ACTION_TYPE = {
+    ADD_ITEM_CART : "ADD_ITEM_CART",
+    TOGGLE_CART : "TOGGLE_CART"
+}

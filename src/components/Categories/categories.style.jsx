@@ -53,7 +53,7 @@ overflow: hidden;
 &:hover {
   cursor: pointer;
   &${Body} {
-   opacity : 0.9
+   opacity : 0.9;
   }
   & ${BackgroundImage} {
       transform : scale(1.1);

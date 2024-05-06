@@ -1,16 +1,23 @@
-import React, { useContext } from 'react'
-import useGetProducts from '../../Hooks/useGetProducts'
-import ProductCart from '../../components/ProductCart/ProductCart.component'
-import { productContext } from '../../Context/Product.context'
-import { useGetCategories } from '../../Hooks/useGetCategories'
+import React, {useEffect} from 'react'
 import CategoryPreview from '../../components/Category Preview/category-preview.component'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCategoryMap } from '../../Store/Category/category.action'
+import { useGetCategories } from '../../Hooks/useGetCategories'
+import { selectCategories } from '../../Store/Category/category.selector'
 const Shop = () => {
+  const dispatch = useDispatch()
+  const categoriesMap = useSelector(selectCategories)
   const {data} = useGetCategories()
+  useEffect(()=> {
+    if(data){
+      dispatch(setCategoryMap(data?.categories))
+    }
+  } , [data, dispatch])
   return (
     <>
-      {data &&
-        Object.keys(data?.categories).map(title => {
-          const product = data?.categories[title].products
+      {categoriesMap &&
+        Object.keys(categoriesMap).map(title => {
+          const product = categoriesMap[title].products
           return <CategoryPreview title={title} products={product} />
         })
       }

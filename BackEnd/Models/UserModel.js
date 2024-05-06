@@ -18,6 +18,11 @@ const userSchema = new mongoose.Schema({
         minLength : [5 , 'please enter atleast 6 digits'],
         required : [true , 'please enter your password']
     },
+    role : {
+        type :String,
+        enum : ['admin' , 'user'],
+        default : 'user'
+    },
     confirmPassword : {
         type : String,
         required : [true , 'please enter confirm password'],

@@ -5,6 +5,8 @@ import Authentication from "../routesPages/Authentication/Authentication";
 import Shop from "../routesPages/Shop/Shop";
 import CheckOut from "../components/checkout/checkout.component";
 import Category from "../components/Category/category.component";
+import AdminDashboard from "../components/AdminDashboard/AdminDashboard";
+import Index from "../components/AdminDashboard/Index/Index.component";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +16,16 @@ const router = createBrowserRouter([
             {
                 index : true,
                 element : <Categories/>
+            },
+            {
+                path : 'dashboard/admin',
+                element : <AdminDashboard/>,
+                children : [
+                    {
+                        index:true,
+                        element: <Index/>
+                    }
+                ]
             },
             {
                 path : 'auth',
