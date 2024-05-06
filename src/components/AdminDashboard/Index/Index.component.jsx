@@ -5,13 +5,7 @@ import {ReactComponent as Bag} from './../../../assets/bag-dash.svg'
 import {ReactComponent as Dollar} from './../../../assets/currency-dollar.svg'  
 import {ReactComponent as Users} from './../../../assets/people.svg'  
 import './Index.style.css'
-import { useGetTopSellingProduct } from '../../../Hooks/useGetTopSellingProduct'
-import { useGetAdminDashboardInfo } from '../../../Hooks/useGetAdminDashboardInfo'
 const Index = () => {
-  const {data : Info} = useGetAdminDashboardInfo()
-  console.log(Info)
-  const {data} = useGetTopSellingProduct()
-  console.log(data)
   return (
     <>
     <div className='Infos-container'>
