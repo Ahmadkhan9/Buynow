@@ -93,30 +93,6 @@ const Index = () => {
       <Graph/>
       </div>
       </div>
-      <div style={{width : '100%' , display : 'flex', justifyContent : 'center'}}>
-        <div style={{width : '70%'}}>
-      <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Stock</th>
-    </tr>
-  </thead>
-  <tbody>
-  {data?.result.map((item, idx) => (
-    <tr>
-    <th scope="row">{idx}</th>
-    <td>{item.name}</td>
-    <td>{item.price}</td>
-    <td>{item.totalSales}</td>
-  </tr>
-  ))}
-  </tbody>
-</table>
-</div>
-      </div>
   </>
   )
 }
