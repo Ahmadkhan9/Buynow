@@ -7,6 +7,4 @@ router.route('/signup').post(AuthController.signUp)
 router.route('/').get(AuthController.getUsers)
 router.route('/login').post(AuthController.logIn)
 router.route('/create-recipt').post(ReciptController.createRecipt)
-router.route('/monthsale').get(AdminController.getLastMonthSales)
-router.route('/aggregate').get(AdminController.getTopSellingItem)
 module.exports = router

@@ -70,6 +70,12 @@ exports.getLastMonthSales = catchAsync(async (req, res,next)=> {
                     $lte : new Date(year, month, 1)
                 }
             }
+        },
+        {
+            $group : {
+                _id : null,
+                lastMonthSales : { $sum : "$totalAmount"}
+            }
         }
     ])
     res.status(200).json({
