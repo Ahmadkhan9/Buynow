@@ -11,7 +11,13 @@ import { Provider } from 'react-redux';
 import { Store, persistor } from './Store/Store';
 import { PersistGate } from 'redux-persist/integration/react';
 import 'bootstrap/dist/css/bootstrap.css'
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: 0, // Set cacheTime to 0 to disable caching globally
+    },
+  },
+})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
