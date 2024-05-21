@@ -32,6 +32,7 @@ exports.getTopSellingItem = catchAsync(async (req,res,next)=> {
             $group : {
                 _id : "$prod._id",
                 name : {$first :"$prod.name"},
+                
                 totalSales :{
                     $sum : "$totalAmount"
                 },
@@ -101,6 +102,6 @@ exports.getBasicAdminDashboardInfo = catchAsync(async (req,res,next)=>{
           ]
     )
     res.status(200).json({
-        Info
+        Info  
     })
 })

@@ -14,5 +14,4 @@ const CartIconComponent = () => {
     </CartIconContainer>
   )
 }
-
-export default CartIconComponent
+export default React.memo(CartIconComponent)

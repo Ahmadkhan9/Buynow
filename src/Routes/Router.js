@@ -1,13 +1,13 @@
+import React, { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import Categories from "../components/Categories/Categories";
-import Authentication from "../routesPages/Authentication/Authentication";
-import Shop from "../routesPages/Shop/Shop";
-import CheckOut from "../components/checkout/checkout.component";
-import Category from "../components/Category/category.component";
-import AdminDashboard from "../components/AdminDashboard/AdminDashboard";
-import Index from "../components/AdminDashboard/Index/Index.component";
-
+ const App = React.lazy(()=> import('../App'))
+ const Categories = React.lazy(()=> import('../components/Categories/Categories'))
+ const Authentication = React.lazy(()=> import('../routesPages/Authentication/Authentication'))
+ const CheckOut = React.lazy(()=> import('../components/checkout/checkout.component'))
+ const Shop = React.lazy(()=> import('../routesPages/Shop/Shop'))
+ const Category = React.lazy(()=> import('../components/Category/category.component'))
+ const AdminDashboard = React.lazy(()=> import('../components/AdminDashboard/AdminDashboard'))
+ const Index = React.lazy(()=> import('../components/AdminDashboard/DefaultPage/Index.component'))
 const router = createBrowserRouter([
     {
         path : '/',
@@ -15,32 +15,54 @@ const router = createBrowserRouter([
         children : [
             {
                 index : true,
-                element : <Categories/>
+                element : (
+                    <Suspense fallback={<div>...loading</div>}>
+                <Categories/>
+                </Suspense>
+            )
             },
             {
                 path : 'dashboard/admin',
-                element : <AdminDashboard/>,
+                element : (
+                    <Suspense fallback={<div>...loading</div>}>
+                <AdminDashboard/>
+                </Suspense>
+            ),
                 children : [
                     {
                         index:true,
-                        element: <Index/>
+                        element: (
+                            <Suspense fallback={<div>...loading</div>}>
+                <Index/>
+                </Suspense>
+                        
+                    )
                     }
                 ]
             },
             {
                 path : 'auth',
-                element : <Authentication/>
+                element : (
+                
+                <Suspense fallback={<div>...loading</div>}><Authentication/></Suspense>
+            
+            )
             },{
                 path : 'shop',
-                element : <Shop/>
+                element : (
+                <Suspense fallback={<div>...loading</div>}>
+                <Shop/>
+                </Suspense>
+            )
             },
             {
                 path : 'shop/:category',
-                element : <Category/>
+                element : <Suspense fallback={<div>...loading</div>}><Category/></Suspense>
             },
             {
                 path : 'checkout',
-                element : <CheckOut/>
+                element : <Suspense fallback={<div>..loading</div>}><CheckOut/></Suspense>
+
             }
         ]
     }

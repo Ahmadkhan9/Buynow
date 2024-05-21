@@ -8,6 +8,7 @@ import './Index.style.css'
 import { useGetBasicAdminPanelInfo } from '../../../Hooks/useGetBasicAdminPanelInfo'
 import { useGetLastMonthSales } from '../../../Hooks/useGetLastMonthSale'
 import { useGetTopSellingProducts } from '../../../Hooks/useGetTopSellingProducts'
+import TableComp from './Table/Table.component'
 const Index = () => {
   const {data} = useGetBasicAdminPanelInfo()
   const {data : lastmonth} = useGetLastMonthSales()
@@ -95,33 +96,13 @@ const Index = () => {
         </div>
       </div>
     </div>
-    <div style={{width : '100%' , display : 'flex' , justifyContent : 'center'}}>
-      <div style={{width : '70%', height : '70%'}}>
+    <div style={{width : '80%' , display : 'flex' , justifyContent : 'center', marginLeft : '60px'}}>
       <Graph/>
       </div>
-      </div>
       <div style={{width : '100%' , display : 'flex', justifyContent : 'center'}}>
-        <div style={{width : '50%'}}>
-        <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Units Sold</th>
-    </tr>
-  </thead>
-  <tbody>
-   {topProd?.result?.map((item , idx) => (
-    <tr>
-    <th scope="row">{idx}</th>
-    <td>{item.name}</td>
-    <td>{item.price}</td>
-    <td>{item.totalSales}</td>
-  </tr>
-   ))}
-  </tbody>
-</table>
+        <div style={{width : '70%' , margin : '10px'}}>
+          <p style={{color : 'white' , textAlign : 'center' , fontFamily : 'Roboto' ,fontWeight : '500' , fontSize : '25px'}}>Top Selling Items</p>
+          <TableComp data={topProd}/>
         </div>
       </div>
   </>

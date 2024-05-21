@@ -5,14 +5,7 @@ import { setCategoryMap } from '../../Store/Category/category.action'
 import { useGetCategories } from '../../Hooks/useGetCategories'
 import { selectCategories } from '../../Store/Category/category.selector'
 const Shop = () => {
-  const dispatch = useDispatch()
   const categoriesMap = useSelector(selectCategories)
-  const {data} = useGetCategories()
-  useEffect(()=> {
-    if(data){
-      dispatch(setCategoryMap(data?.categories))
-    }
-  } , [data, dispatch])
   return (
     <>
       {categoriesMap &&

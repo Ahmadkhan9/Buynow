@@ -33,4 +33,4 @@ const CheckOutItem = ({cartItem}) => {
   )
 }
 
-export default CheckOutItem
+export default React.memo(CheckOutItem)

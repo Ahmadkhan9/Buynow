@@ -33,4 +33,4 @@ const CheckOut = () => {
   )
 }
 
-export default CheckOut
+export default React.memo(CheckOut)

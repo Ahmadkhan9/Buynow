@@ -20,4 +20,4 @@ const CategoryPreview = ({title , products}) => {
   )
 }
 
-export default CategoryPreview
+export default React.memo(CategoryPreview)
